@@ -2,15 +2,17 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 import { Button, Form, FormGroup } from "react-bootstrap"
 import { createUrl } from "../../utils/url"
 import { CityDto } from "../../dto/city.dto"
+import e from "express"
 
 type IProps = { 
     loadCities: () => void
     cityDto?: CityDto
     setCityDto: (c: CityDto) => void
+    cities: CityDto[]
 }
 
 export function CityForm(props: IProps) {
-    const { loadCities, cityDto, setCityDto } = props
+    const { loadCities, cityDto, setCityDto, cities } = props
     const [formData, setFormData] = useState<CityDto>({} as CityDto)
     useEffect(() => {
         if (cityDto) setFormData(cityDto)
@@ -22,13 +24,13 @@ export function CityForm(props: IProps) {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const link = formData?._id ? `api/cities/${formData._id}`: `api/cities`
-
+        
         fetch(createUrl(link), {
             method: formData._id ? "PUT" : "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData),
         })
-        .then((r) => {
+        .then((res) => {
             if(formData?._id) setCityDto(undefined)
             loadCities()
             setFormData(undefined)
