@@ -24,7 +24,7 @@ export default function Cities() {
     return (
         <div>
             <CityForm {...{ loadCities, cityDto, setCityDto }} />
-            <CityList {...{ cities, setCityDto, cityDto }} />
+            <CityList {...{ cities, setCityDto, cityDto, loadCities }} />
         </div>
     )
 }

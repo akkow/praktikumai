@@ -1,37 +1,38 @@
 import { Button, ButtonGroup, Table } from "react-bootstrap";
 import { CityDto } from "../../dto/city.dto";
 import { createUrl } from "../../utils/url";
-import { useEffect, useState } from "react";
 
-type IProps = { cities: CityDto[]; setCityDto: (c: CityDto) => void; cityDto: CityDto }
+type IProps = { 
+    cities: CityDto[]
+    setCityDto: (c: CityDto) => void
+    cityDto?: CityDto
+    loadCities: () => void
+}
 
 export function CityList(props: IProps) {
 
-    const { cities, setCityDto, cityDto } = props
+    const { cities, setCityDto, cityDto, loadCities } = props
 
     // Change button
     const handleFillForm = (city: CityDto) => {
         setCityDto(city)
     }
 
-    // Delete button state hook
-    const [cityData, setCityData] = useState<CityDto>({} as CityDto)
-    useEffect(() => {
-        if (cityDto) setCityData(cityDto)
-    }, [cityDto])
-    
     // Delete button
-    const handleDeleteFromList =  async (city: CityDto) => {
-
-        const link = `api/cities/${cityData?._id}`
-        await fetch(createUrl(link), {
-            method: "DELETE"
-        })
-        .catch((e) => {
-            console.log(e)
-        })
-        setCityData({ ...city })
+    const handleDeleteFromList = (city: CityDto) => {
         console.log(city)
+
+        const link = city?._id ? `api/cities/${city._id}`: `api/cities`
+        fetch(createUrl(link), {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(city),
+        })
+        .then((res) => {
+            if(city?._id) setCityDto(undefined)
+            loadCities()
+            console.log(res.status)
+        })   
     }
 
     return (

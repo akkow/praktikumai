@@ -52,7 +52,7 @@ export function CityForm(props: IProps) {
                 <Form.Control 
                 type="number"
                 placeholder="Iveskite skaiciu"
-                value={ formData?.population }
+                value={ formData?.population ?? "" }
                 onChange={handleField} />
             </Form.Group>
             <Button variant="primary" type="submit">Saugoti</Button> 
