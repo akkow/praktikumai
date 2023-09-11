@@ -35,29 +35,38 @@ export function CityList(props: IProps) {
         })   
     }
 
+    let i = 1;
+
     return (
-        <Table striped bordered hover>
-            <thead>
-                <tr>
-                    <th>Miestas</th>
-                    <th>Gyventojų skaičius</th>
-                    <th>Veiksmai</th>
-                </tr>
-            </thead>
-            <tbody>
-                {cities.map((city, key) => (
-                    <tr key={key}>
-                        <td>{city.name}</td>
-                        <td>{city.population}</td>
+        <div className="overflow-x-auto grid place-items-center h-auto my-7">
+            <table className="table-md bg-gray-700 overflow-hidden rounded-xl">
+                {/* head */}
+                <thead className="border-2 border-gray-600 uppercase text-md text-white text-center">
+                    <tr>
+                        <th>#</th>
+                        <th>Pavadinimas</th>
+                        <th>Gyventoju sk.</th>
+                        <th>Veiksmai</th>
+                        </tr>
+                </thead>
+                <tbody className="border-2 border-gray-600 uppercase text-md text-white font-bold">
+                    {/* row 1 */}
+                    {cities.map((city, key) => (
+                    <tr className="border-2 border-gray-600" key={key}>
+                        <td className="text-center">{i++}</td>
+                        <td className="text-center">{city.name}</td>
+                        <td className="text-center">{city.population}</td>
                         <td>
                             <ButtonGroup>
-                                <Button variant="primary" onClick={() => handleFillForm(city)}>Keisti</Button>
-                                <Button variant="danger"  onClick={() => handleDeleteFromList(city)}>Šalinti</Button>
+                                <Button className="font-bold bg-blue-900 hover:bg-blue-600 border-none" onClick={() => handleFillForm(city)}>Keisti</Button>
+                                <Button className="font-bold bg-red-500 hover:bg-red-900 border-none text-white" onClick={() => handleDeleteFromList(city)}>Šalinti</Button>
                             </ButtonGroup>
                         </td>
                     </tr>
-                ))}
-            </tbody>
-        </Table>
+                    ))}
+                    {/* row 2 */}
+                </tbody>
+            </table>
+        </div>
     )
 }

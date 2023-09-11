@@ -6,7 +6,7 @@ export function Body(props: { children: React.ReactNode}) {
 
     return (
         <SessionProvider>
-            <body className="container-lg">{children}</body>
+            <body className="flex flex-col min-h-screen container-lg bg-white">{children}</body>
         </SessionProvider>
     )
 }

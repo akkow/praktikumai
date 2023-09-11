@@ -35,7 +35,46 @@ export function CountryList(props: IProps) {
         })   
     }
 
+    let i = 1;
+
     return (
+        <div className="overflow-x-auto grid place-items-center h-auto my-7">
+            <table className="table-md bg-gray-700 overflow-hidden rounded-xl">
+                {/* head */}
+                <thead className="border-2 border-gray-600 uppercase text-md text-white text-center">
+                    <tr>
+                        <th>#</th>
+                        <th>Pavadinimas</th>
+                        <th>Sostine</th>
+                        <th>Plotas</th>
+                        <th>Prezidentas</th>
+                        <th>Kalba</th>
+                        <th>Veiksmai</th>
+                        </tr>
+                </thead>
+                <tbody className="border-2 border-gray-600 uppercase text-md text-white font-bold">
+                    {/* row 1 */}
+                    {countries.map((country, key) => (
+                    <tr className="border-2 border-gray-600" key={key}>
+                        <td className="text-center">{i++}</td>
+                        <td className="text-center">{country.name}</td>
+                        <td className="text-center">{country.capital}</td>
+                        <td className="text-center">{country.area}</td>
+                        <td className="text-center">{country.president}</td>
+                        <td className="text-center">{country.language}</td>
+                        <td>
+                            <ButtonGroup>
+                                <Button className="font-bold bg-blue-900 hover:bg-blue-600 border-none" onClick={() => handleFillForm(country)}>Keisti</Button>
+                                <Button className="font-bold bg-red-500 hover:bg-red-900 border-none text-white" onClick={() => handleDeleteFromList(country)}>Šalinti</Button>
+                            </ButtonGroup>
+                        </td>
+                    </tr>
+                    ))}
+                    {/* row 2 */}
+                </tbody>
+            </table>
+        </div>
+        /*
         <Table striped bordered hover>
             <thead>
                 <tr>
@@ -65,5 +104,6 @@ export function CountryList(props: IProps) {
                 ))}
             </tbody>
         </Table>
+        */
     )
 }

@@ -32,7 +32,7 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white">
+    <header className="bg-gray-800">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
@@ -52,8 +52,8 @@ export function Header() {
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
-            <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-              Product
+            <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-white">
+              Dropdown
               <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
             </Popover.Button>
 
@@ -102,18 +102,21 @@ export function Header() {
             </Transition>
           </Popover>
 
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Features
+          <a href="cities" className="text-sm font-semibold leading-6 text-white">
+            Cities
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Marketplace
+          <a href="countries" className="text-sm font-semibold leading-6 text-white">
+            Countries
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Company
+          <a href="api/cities" className="text-sm font-semibold leading-6 text-white">
+            Cities API
+          </a>
+          <a href="api/countries" className="text-sm font-semibold leading-6 text-white">
+            Countries API
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="#" className="text-sm font-semibold leading-6 text-white">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
