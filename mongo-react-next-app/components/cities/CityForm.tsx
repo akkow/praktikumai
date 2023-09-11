@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react"
-import { Button, Form, FormGroup } from "react-bootstrap"
 import { createUrl } from "../../utils/url"
 import { CityDto } from "../../dto/city.dto"
 import e from "express"
@@ -40,24 +39,19 @@ export function CityForm(props: IProps) {
     }
     
     return (
-        <Form onSubmit={handleSubmit} className="mb-5">
-            <Form.Group className="mb-3" controlId="name">
-                <Form.Label>Miesto pavadinimas</Form.Label>
-                <Form.Control 
-                type="text" 
-                placeholder="Iveskite pavadinima" 
-                value={ formData?.name ?? "" }
-                onChange={handleField} />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="population">
-                <Form.Label>Gyventojų skaičius</Form.Label>
-                <Form.Control 
-                type="number"
-                placeholder="Iveskite skaiciu"
-                value={ formData?.population ?? "" }
-                onChange={handleField} />
-            </Form.Group>
-            <Button variant="primary" type="submit">Saugoti</Button> 
-        </Form>
+        <form onSubmit={handleSubmit} className="w-full max-w-lg md:flex md:items-center mb-6">
+
+            <div className="w-full md:w-1/2 px-3 md:items-center mb-8">
+                <label className="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">Miesto Pavadinimas</label>
+                <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="name" type="text" placeholder="Iveskite pavadinima" value={ formData?.name ?? "" } onChange={handleField}/>
+            </div>
+
+            <div className="w-full md:w-1/2 px-3 md:items-center mb-8">
+                <label className="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">Gyventojų skaičius</label>
+                <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="population" type="number" placeholder="Iveskite gyventojų skaičių" value={ formData?.population ?? "" } onChange={handleField}/>
+            </div>
+            
+            <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" btn-active btn-primary id="save-btn" type="submit">Saugoti</button>
+        </form>
     )
 }

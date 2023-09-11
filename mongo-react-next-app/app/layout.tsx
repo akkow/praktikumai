@@ -1,7 +1,7 @@
-import "bootstrap/dist/css/bootstrap.min.css"
 import { Body } from "../components/pageParts/Body"
 import { Footer } from "../components/pageParts/Footer"
 import { Header } from "../components/pageParts/Header"
+import "../styles/globals.css"
 
 export const metadata = {
   title: "Beno aplikacija",
