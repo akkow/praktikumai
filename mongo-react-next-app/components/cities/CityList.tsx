@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Table } from "react-bootstrap";
+import { Button, ButtonGroup } from "react-bootstrap";
 import { CityDto } from "../../dto/city.dto";
 import { createUrl } from "../../utils/url";
 
