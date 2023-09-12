@@ -11,6 +11,12 @@ export default async function regions(
     /* const session = await getServerSession(req, res, authOptions)
     if (!session) return res.status(401).json({error: "Reikia prisijungti"})*/
     await connect()
+    switch (req.method) {
+        case "POST": {
+            console.log("logged..")
+            break
+        }
+    }
 
     const regions = await GetRegionsService()
     res.json(regions)

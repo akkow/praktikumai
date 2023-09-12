@@ -6,7 +6,7 @@ export interface ICounty extends Document {
     region_id: string
 }
 
-const CountySchema: Schema = new Schema({
+const CountySchema = new Schema<ICounty>({
     _id: { type: String },
     name: { type: String },
     region_id: { type: String }

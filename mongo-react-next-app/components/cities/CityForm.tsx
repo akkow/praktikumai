@@ -1,23 +1,13 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 import { createUrl } from "../../utils/url"
 import { CityDto } from "../../dto/city.dto"
-import { CountyDto } from "../../dto/county.dto"
 import e from "express"
-import { RegionDto } from "../../dto/region.dto"
 
 type IProps = { 
     loadCities: () => void
     cityDto?: CityDto
     setCityDto: (c: CityDto) => void
     cities: CityDto[]
-
-    setCountyDto: (c: CountyDto) => void
-    countyDto?: CountyDto
-    counties: CountyDto[]
-
-    setRegionDto: (c: RegionDto) => void
-    regionDto?: RegionDto
-    regions: RegionDto[]
 }
 
 export function CityForm(props: IProps) {
@@ -27,8 +17,10 @@ export function CityForm(props: IProps) {
         if (cityDto) setFormData(cityDto)
     }, [cityDto])
 
-    /*useEffect(() => {
-        fetch(regions)
+    const [regionData, setRegionData] = useState<CityDto>({} as CityDto)
+
+   /* useEffect(() => {
+        fetch(`api/regions/${}`)
 
         fetch(counties)
     })*/

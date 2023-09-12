@@ -5,10 +5,10 @@ export interface IRegion extends Document {
     name: string
 }
 
-const RegionSchema: Schema = new Schema({
+const RegionSchema = new Schema<IRegion>({
     _id: { type: String },
     name: { type: String },
 });
 
 export const Region: Model<IRegion, {}, {}, {}, any> = 
-    models.regions || model<IRegion>("regions", RegionSchema)
+    models.regions || model<IRegion>("regions", RegionSchema);

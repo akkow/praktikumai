@@ -16,7 +16,7 @@ export default async function City(req: NextApiRequest, res: NextApiResponse) {
             break
         }
         case "DELETE": {
-            DeleteCityService(req.body)
+            await DeleteCityService(req.body)
             break
         }
     }

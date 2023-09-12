@@ -11,7 +11,8 @@ export default async function Region(req: NextApiRequest, res: NextApiResponse) 
             res.json(regions)
             break
         }
-    }
 
+    }  
+    
     res.end()
 }
