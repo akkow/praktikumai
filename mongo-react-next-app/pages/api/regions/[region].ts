@@ -9,6 +9,7 @@ export default async function Region(req: NextApiRequest, res: NextApiResponse) 
         case "GET": {
             const regions = await GetRegionService(req?.query?.region.toString())
             res.json(regions)
+            console.log(`regions._id: ${req?.query?.region.toString()}`)
             break
         }
 

@@ -7,7 +7,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-  /*  const session = await getServerSession(req, res, authOptions);
+    const session = await getServerSession(req, res, authOptions);
     if (!session) return res.send(JSON.stringify({}));
-    res.send(JSON.stringify(session, null, 2))*/
+    res.send(JSON.stringify(session, null, 2))
 }

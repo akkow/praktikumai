@@ -6,6 +6,7 @@ import { IUser, User } from "../../../schemas/user.schema";
 import connect from "../../../lib/mongoose";
 import { verifyPassword } from "../../../lib/auth";
 import { UserDto } from "../../../dto/user.dto"
+import { getToken } from "next-auth/jwt";
 
 let userAccount: UserDto = null;
 
